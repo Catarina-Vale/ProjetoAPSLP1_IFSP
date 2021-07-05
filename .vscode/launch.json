@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Tryn5Application<tryn5>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.alexandre.tryn5.Tryn5Application",
+            "projectName": "tryn5",
+            "args": ""
+        }
+    ]
+}
