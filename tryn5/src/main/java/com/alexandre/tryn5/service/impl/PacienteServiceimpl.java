@@ -1,9 +1,11 @@
 package com.alexandre.tryn5.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.alexandre.tryn5.model.Paciente;
+import com.alexandre.tryn5.model.Procedimento;
 import com.alexandre.tryn5.repository.PacienteRepository;
 import com.alexandre.tryn5.service.PacienteService;
 
@@ -68,6 +70,32 @@ public class PacienteServiceimpl implements PacienteService{
     public Paciente CreatePaciente(Paciente paciente) {
 
         return this.pacienteRepo.save(paciente);
+    }
+
+    @Override
+    public Paciente AddProcedimento(String cpf, Procedimento procedimento) {
+
+        Paciente oldPaciente = new Paciente();
+        oldPaciente.setCpf(cpf);
+        final Example<Paciente> example = Example.of(oldPaciente);
+        final Optional<Paciente> dbuser = this.pacienteRepo.findOne(example);
+        if(dbuser.isPresent()){
+            Paciente pacienteASalvar = dbuser.get();
+            if(pacienteASalvar.getProcedimento() == null){
+                ArrayList<Procedimento> mylist = new ArrayList<Procedimento>();
+                mylist.add(procedimento);
+                pacienteASalvar.setProcedimento(mylist);
+            }else{
+                ArrayList<Procedimento> mylist = new ArrayList<Procedimento>();
+                mylist.addAll(pacienteASalvar.getProcedimento());
+                mylist.add(procedimento);
+                pacienteASalvar.setProcedimento(mylist);
+            }
+            return this.pacienteRepo.save(pacienteASalvar);
+        }
+        else{
+            return null;
+        }
     }
     
 }

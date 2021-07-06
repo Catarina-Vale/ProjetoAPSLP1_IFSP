@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.alexandre.tryn5.model.Paciente;
+import com.alexandre.tryn5.model.Procedimento;
 import com.alexandre.tryn5.service.PacienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,12 @@ public class PacienteController {
     public Paciente UpdatePaciente(@RequestBody Paciente paciente, @RequestParam String cpf){
         
         return this.pacienteService.UpdatePaciente(cpf, paciente);
+    }
+
+    @PutMapping(value="/paciente/procedimento")
+    public Paciente AddProcedimento(@RequestBody Procedimento procedimento, @RequestParam String cpf){
+        
+        return this.pacienteService.AddProcedimento(cpf, procedimento);
     }
 
 }

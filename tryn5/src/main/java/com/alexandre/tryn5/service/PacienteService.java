@@ -3,6 +3,7 @@ package com.alexandre.tryn5.service;
 import java.util.List;
 
 import com.alexandre.tryn5.model.Paciente;
+import com.alexandre.tryn5.model.Procedimento;
 
 public interface PacienteService {
 
@@ -13,4 +14,6 @@ public interface PacienteService {
     public Paciente UpdatePaciente(String cpf, Paciente newPacienteInfo);
 
     public Paciente CreatePaciente(Paciente paciente);
+
+    public Paciente AddProcedimento(String cpf, Procedimento procedimento);
 }
