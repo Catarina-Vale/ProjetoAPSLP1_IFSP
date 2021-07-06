@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 
 public interface LogInService {
+    
     public List<User> GetAll();
 
     public ResponseEntity<?> GetByExample(User user);

@@ -1,6 +1,5 @@
 package com.alexandre.tryn5.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -9,22 +8,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Document
 
-public class User {
 
-    @Id
-    private String id;
-
-
-    private String username;
-    private String password;
-    private String profession;
-
+public class Endereco {
+    
+    private String nomeLogradouro;
+    private Integer nLogradouro;
+    private String bairro;
+    private String cep;
+    private String cidade;
+    private String uf;
     
 }
