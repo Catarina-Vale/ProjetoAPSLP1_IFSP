@@ -47,5 +47,20 @@ public class LoginServiceimpl implements LogInService {
 
         return this.loginRepo.save(user);
     }
+
+    @Override
+    public User UpdateUser(User user, String username) {
+            User oldUser = new User();
+            oldUser.setUsername(username);
+            final Example<User> example = Example.of(oldUser);
+            final Optional<User> dbUser = this.loginRepo.findOne(example);
+            if(dbUser.isPresent()){
+                User userAsalvar = dbUser.get();
+                userAsalvar.setUsername(user.getUsername() != null ? user.getUsername() : userAsalvar.getUsername());
+                userAsalvar.setPassword(user.getPassword() != null ? user.getPassword() : userAsalvar.getPassword());
+                userAsalvar.setProfession(user.getProfession() != null ? user.getProfession() : userAsalvar.getProfession());
+            }
+        return null;
+    }
     
 }

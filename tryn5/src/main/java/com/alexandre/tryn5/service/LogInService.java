@@ -19,4 +19,6 @@ public interface LogInService {
     public User GetById(String id);
 
     public User CreateUser(User user);
+
+    public User UpdateUser(User user, String username);
 }
