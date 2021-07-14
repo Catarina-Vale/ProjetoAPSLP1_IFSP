@@ -16,16 +16,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Configuration
-@EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
-
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**");
-	}
-}
-
 @RestController
 public class PacienteController {
 
