@@ -97,5 +97,44 @@ public class PacienteServiceimpl implements PacienteService{
             return null;
         }
     }
+
+    @Override
+    public Paciente GetByCpf(String cpf) {
+        Paciente findTheGuy = new Paciente();
+        findTheGuy.setCpf(cpf);
+        final Example<Paciente> example = Example.of(findTheGuy);
+        final Optional<Paciente> dbuser = this.pacienteRepo.findOne(example);
+        if(dbuser.isPresent()){
+            return dbuser.get();
+        }
+        else{
+            return null;
+        }
+    }
+
+    @Override
+    public Paciente AddAlergia(String cpf, String alergia) {
+        Paciente oldPaciente = new Paciente();
+        oldPaciente.setCpf(cpf);
+        final Example<Paciente> example = Example.of(oldPaciente);
+        final Optional<Paciente> dbuser = this.pacienteRepo.findOne(example);
+        if(dbuser.isPresent()){
+            Paciente pacienteASalvar = dbuser.get();
+            if(pacienteASalvar.getProcedimento() == null){
+                ArrayList<String> mylist = new ArrayList<String>();
+                mylist.add(alergia);
+                pacienteASalvar.setAlergia(mylist);
+            }else{
+                ArrayList<String> mylist = new ArrayList<String>();
+                mylist.addAll(pacienteASalvar.getAlergia());
+                mylist.add(alergia);
+                pacienteASalvar.setAlergia(mylist);
+            }
+            return this.pacienteRepo.save(pacienteASalvar);
+        }
+        else{
+            return null;
+        }
+    }
     
 }
