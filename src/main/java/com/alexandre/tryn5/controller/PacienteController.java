@@ -22,56 +22,56 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PostMapping(value="/paciente")
     public Paciente getOne(@RequestBody Paciente paciente){
 
        return this.pacienteService.GetByExample(paciente);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @GetMapping(value="/paciente/testall")
     public List<Paciente> getAllPacientes() {
 
         return this.pacienteService.GetAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @GetMapping(value="/paciente")
     public Paciente getPacienteByCpf(@RequestParam String cpf) {
 
         return this.pacienteService.GetByCpf(cpf);
     }
         
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PostMapping(value="/paciente/cadastro") 
     public Paciente createPaciente(@RequestBody Paciente paciente){
 
         return this.pacienteService.CreatePaciente(paciente);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PutMapping(value="/paciente")
     public Paciente UpdatePaciente(@RequestBody Paciente paciente, @RequestParam String cpf){
         
         return this.pacienteService.UpdatePaciente(cpf, paciente);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PutMapping(value="/paciente/procedimento")
     public Paciente AddProcedimento(@RequestBody Procedimento procedimento, @RequestParam String cpf){
         
         return this.pacienteService.AddProcedimento(cpf, procedimento);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PutMapping(value="/paciente/alergia")
     public Paciente AddAlergia(@RequestParam String cpf, @RequestParam String alergia){
         

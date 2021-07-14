@@ -21,30 +21,30 @@ public class LoginController {
     private LogInService loginService;
 
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PostMapping(value="/login")
     public ResponseEntity<?> getOne(@RequestBody User user){
        return this.loginService.GetByExample(user);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @GetMapping(value="/login/testall")
     public List<User> getAllUsers() {
         return this.loginService.GetAll();
     }
         
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PostMapping(value="/login/cadastro") 
     public User createUser(@RequestBody User user){
         return this.loginService.CreateUser(user);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/yourPath")
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @GetMapping("/yourPath")
     @PutMapping(value="/login")
     public User updateUser(@RequestBody User user, @RequestParam String username){
        return this.loginService.UpdateUser(user, username);
