@@ -22,7 +22,7 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @GetMapping(value="/paciente")
+    @PostMapping(value="/paciente")
     public Paciente getOne(@RequestBody Paciente paciente){
 
        return this.pacienteService.GetByExample(paciente);
@@ -33,9 +33,15 @@ public class PacienteController {
 
         return this.pacienteService.GetAll();
     }
+
+    @GetMapping(value="/paciente")
+    public Paciente getPacienteByCpf(@RequestParam String cpf) {
+
+        return this.pacienteService.GetByCpf(cpf);
+    }
         
 
-    @PostMapping(value="/paciente") 
+    @PostMapping(value="/paciente/cadastro") 
     public Paciente createPaciente(@RequestBody Paciente paciente){
 
         return this.pacienteService.CreatePaciente(paciente);
@@ -51,6 +57,12 @@ public class PacienteController {
     public Paciente AddProcedimento(@RequestBody Procedimento procedimento, @RequestParam String cpf){
         
         return this.pacienteService.AddProcedimento(cpf, procedimento);
+    }
+
+    @PutMapping(value="/paciente/alergia")
+    public Paciente AddAlergia(@RequestParam String cpf, @RequestParam String alergia){
+        
+        return this.pacienteService.AddAlergia(cpf, alergia);
     }
 
 }

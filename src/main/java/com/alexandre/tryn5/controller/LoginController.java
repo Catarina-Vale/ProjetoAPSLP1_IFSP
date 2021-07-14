@@ -12,14 +12,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 public class LoginController {
     @Autowired
     private LogInService loginService;
 
-    @GetMapping(value="/login")
+    @PostMapping(value="/login")
     public ResponseEntity<?> getOne(@RequestBody User user){
        return this.loginService.GetByExample(user);
     }
@@ -31,9 +32,14 @@ public class LoginController {
         
 
 
-    @PostMapping(value="/login") 
+    @PostMapping(value="/login/cadastro") 
     public User createUser(@RequestBody User user){
         return this.loginService.CreateUser(user);
+    }
+
+    @PutMapping(value="/login")
+    public User updateUser(@RequestBody User user, @RequestParam String username){
+       return this.loginService.UpdateUser(user, username);
     }
 
 

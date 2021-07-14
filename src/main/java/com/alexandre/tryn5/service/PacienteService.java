@@ -16,4 +16,8 @@ public interface PacienteService {
     public Paciente CreatePaciente(Paciente paciente);
 
     public Paciente AddProcedimento(String cpf, Procedimento procedimento);
+
+    public Paciente GetByCpf(String cpf);
+
+    public Paciente AddAlergia(String cpf, String alergia);
 }
